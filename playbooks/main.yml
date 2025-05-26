@@ -1,6 +1,6 @@
 ---
 - name: Apache Installation auf Debian und Rocky Linux
-  hosts: all
+  hosts: localhost
   become: true
   vars:
     ansible_python_interpreter: /usr/bin/python3
@@ -22,3 +22,8 @@
         name: "{{ apache_package[ansible_distribution] }}"
         state: started
         enabled: yes
+
+    - name: Zeige erkannte Distribution
+      debug:
+        msg: "{{ ansible_distribution }}"
+
